@@ -9,7 +9,7 @@ class Board {
         const val PLAYER = "O"
         const val COMPUTER = "X"
     }
-
+//initialize with null values
     val board = Array(3) { arrayOfNulls<String>(3) }
 
     private val availableCells: List<Cell>
@@ -66,7 +66,7 @@ class Board {
 
     var computersMove: Cell? = null
 
-    fun minmax(depth: Int, player: String): Int {
+    fun minMax(depth: Int, player: String): Int {
         if (hasComputerWon()) return +1
         if (hasPlayerWon()) return -1
 
@@ -79,7 +79,7 @@ class Board {
             val cell = availableCells[i]
             if (player == COMPUTER) {
                 placeMove(cell, COMPUTER)
-                val currentScore = minmax(depth + 1, PLAYER)
+                val currentScore = minMax(depth + 1, PLAYER)
                 max = max(currentScore, max)
 
                 if (currentScore >= 0) {
@@ -97,7 +97,7 @@ class Board {
 
             } else if (player == PLAYER) {
                 placeMove(cell, PLAYER)
-                val currentScore = minmax(depth + 1, COMPUTER)
+                val currentScore = minMax(depth + 1, COMPUTER)
                 min = min(currentScore, min)
 
                 if (min == -1) {

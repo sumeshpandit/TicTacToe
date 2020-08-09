@@ -88,7 +88,7 @@ class SinglePlayerActivity : AppCompatActivity() {
             if (!board.isGameOver) {
                 val cell = Cell(i, j)
                 board.placeMove(cell, Board.PLAYER)
-                board.minmax(0, Board.COMPUTER)
+                board.minMax(0, Board.COMPUTER)
                 board.computersMove?.let {
                     board.placeMove(it, Board.COMPUTER)
                 }
